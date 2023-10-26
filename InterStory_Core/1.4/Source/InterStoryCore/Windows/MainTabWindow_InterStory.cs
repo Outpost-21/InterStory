@@ -54,7 +54,7 @@ namespace InterStoryCore
             listing.GapLine();
             foreach(InterPawnDef pawn in DefDatabase<InterPawnDef>.AllDefs)
             {
-                if (InteractionUtil.IsContactable(pawn))
+                if (InterStoryUtil.IsContactable(pawn))
                 {
                     if (listing.ButtonText(pawn.LabelCap))
                     {
@@ -70,12 +70,8 @@ namespace InterStoryCore
         {
             Rect drawRect = new Rect(inRect.x + 16f, inRect.y + 16f, inRect.width - 32f, inRect.height - 32f);
             Widgets.DrawTextureFitted(drawRect, MaterialPool.MatFrom(selectedPawn.pawnImagePath).mainTexture, 1f);
-            Rect labelRect = new Rect(inRect.x + 8f, inRect.y + drawRect.height + 24f, inRect.width - 16f, 32f);
-            Listing_Standard listing = new Listing_Standard();
-            listing.Begin(labelRect);
-            Color labelColor = InteractionUtil.GetColorForAttitude(selectedPawn);
-            listing.Label("Attitude: " + selectedPawn.Attitude.ToString().Colorize(labelColor));
-            listing.End();
+            Rect labelRect = new Rect(inRect.x + 16f, inRect.y + drawRect.height + 24f, inRect.width - 32f, 32f);
+            Widgets.TextArea(labelRect, "Favor: " + InterStoryUtil.GetFavorWith(selectedPawn), true);
         }
     }
 }

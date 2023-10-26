@@ -37,7 +37,5 @@ namespace InterStoryCore
                 return workerInt;
             }
         }
-
-        public PawnAttitude Attitude = PawnAttitude.Neutral;
     }
 }

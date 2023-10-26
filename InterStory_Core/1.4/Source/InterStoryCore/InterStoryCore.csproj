@@ -87,17 +87,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChatOption.cs" />
-    <Compile Include="ChatOptionWorker_IntroComplete.cs" />
-    <Compile Include="ChatOptionWorker.cs" />
-    <Compile Include="ChatWorker.cs" />
+    <Compile Include="Data\ChatOption.cs" />
+    <Compile Include="ChatOptionWorker\ChatOptionWorker_IntroComplete.cs" />
+    <Compile Include="ChatOptionWorker\ChatOptionWorker.cs" />
+    <Compile Include="ChatWorkers\ChatWorker.cs" />
     <Compile Include="Utilities\InterStoryUtil.cs" />
-    <Compile Include="WorldComp_InterStory.cs" />
+    <Compile Include="WorldComps\WorldComp_InterStory.cs" />
     <Compile Include="Utilities\ListingUtil.cs" />
-    <Compile Include="Utilities\InteractionUtil.cs" />
-    <Compile Include="InterPawnDef.cs" />
-    <Compile Include="MainTabWindow_InterStory.cs" />
-    <Compile Include="PawnAttitude.cs" />
+    <Compile Include="Defs\InterPawnDef.cs" />
+    <Compile Include="Windows\MainTabWindow_InterStory.cs" />
     <Compile Include="Utilities\LogUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="InterStoryMod.cs" />

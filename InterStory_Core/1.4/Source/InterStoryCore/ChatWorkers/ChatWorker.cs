@@ -24,7 +24,7 @@ namespace InterStoryCore
         {
             if (lastChatOption == null)
             {
-                if (!InteractionUtil.HasChattedBefore(def) && !def.introKey.NullOrEmpty())
+                if (!InterStoryUtil.HasChattedBefore(def) && !def.introKey.NullOrEmpty())
                 {
                     IEnumerable<ChatOption> options = from o in def.chatOptions
                                                       where o.chatKey == def.introKey

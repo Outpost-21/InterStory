@@ -42,7 +42,7 @@ namespace InterStoryCore
             harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
 
-        public override string SettingsCategory() => "InterStoryCore";
+        public override string SettingsCategory() => "InterStory - Core";
 
         public override void DoSettingsWindowContents(Rect inRect)
         {
