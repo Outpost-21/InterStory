@@ -9,7 +9,7 @@
 		<order>499</order>
 		<validWithoutMap>true</validWithoutMap>
 		<minimized>True</minimized>
-		<!-- <iconPath>InterStory/Storyteller</iconPath> -->
+		<iconPath>InterStory/MainTab_InterStory</iconPath>
 	</MainButtonDef>
 
 </Defs>
