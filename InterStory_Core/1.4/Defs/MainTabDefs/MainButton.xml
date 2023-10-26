@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<MainButtonDef>
+		<defName>InterStory_Contact</defName>
+		<label>Contact</label>
+		<description>Interact with faction pawns.</description>
+		<tabWindowClass>InterStoryCore.MainTabWindow_InterStory</tabWindowClass>
+		<order>499</order>
+		<validWithoutMap>true</validWithoutMap>
+		<minimized>True</minimized>
+		<!-- <iconPath>InterStory/Storyteller</iconPath> -->
+	</MainButtonDef>
+
+</Defs>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>InterStory - Core</name>
+	<author>Neronix17</author>
+	<supportedVersions>
+		<li>1.4</li>
+	</supportedVersions>
+	<packageId>Neronix17.InterStory.Core</packageId>
+	<description>Instead of simply flinging items at a faction to gain influence with them, try talking to some faction aligned NPCs! Request quests or challenges to gain influence, and spend it on rewards, or force raids by insulting them! It's all up to you how nice or nasty you want to be, they all have distinct personalities that will react differently to how you behave.</description>
+	<modDependencies>
+		<li>
+			<packageId>neronix17.toolbox</packageId>
+			<displayName>Tabula Rasa</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=1660622094</steamWorkshopUrl>
+		</li>
+	</modDependencies>
+	<loadAfter>
+		<li>neronix17.toolbox</li>
+	</loadAfter>
+</ModMetaData>

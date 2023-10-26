@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>InterStory - Sam Taylor</name>
+	<author>Neronix17</author>
+	<supportedVersions>
+		<li>1.4</li>
+	</supportedVersions>
+	<packageId>Neronix17.InterStory.SamTaylor</packageId>
+	<description>An interactive colony leader you can learn from and request help or do quests for to gain favor with. Example mod for the InterStory framework.</description>
+</ModMetaData>

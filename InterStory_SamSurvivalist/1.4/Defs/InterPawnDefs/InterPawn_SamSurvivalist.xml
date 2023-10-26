@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+	<InterStoryCore.InterPawnDef>
+		<defName>InterStory_SamTaylor</defName>
+		<label>Sam Taylor</label>
+		<pawnImagePath>InterStory/Pawns/Sam</pawnImagePath>
+		<introKey>ISST_IntroductionHello</introKey>
+		<chatOptions>
+			<li>
+				<chatKey>ISST_IntroductionHello</chatKey>
+				<outputText>Howdy there, partner. This here's Captain Sam Taylor, space cowboy extraordinaire, coming at ya from the edge of the galaxy. I reckon we got ourselves a new neighbor on this rimworld of ours. Pleasure to make your acquaintance. What can I do ya for, settler? Over.</outputText>
+				<responseOnly>true</responseOnly>
+				<acceptedKeys>
+					<li>ISST_IntroductionResponseA</li>
+				</acceptedKeys>
+				<allowCloseChat>false</allowCloseChat>
+			</li>
+			<li>
+				<chatKey>ISST_IntroductionResponseA</chatKey>
+				<responseOnly>true</responseOnly>
+				<inputText>Hi, nice to meet you! Got any tips for someone just getting started?</inputText>
+				<outputText>Well, ain't that a fine question to start with. Surviving on the rimworld can be as wild as a bucking bronco, but fear not, I've got a few nuggets of wisdom to share...</outputText>
+				<acceptedKeys>
+					<li>ISST_IntroductionResponseB</li>
+				</acceptedKeys>
+				<allowCloseChat>false</allowCloseChat>
+			</li>
+			<li>
+				<chatKey>ISST_IntroductionResponseB</chatKey>
+				<responseOnly>true</responseOnly>
+				<inputText>...</inputText>
+				<outputText>1. Secure Your Basics: First things first, make sure you've got a solid source of food, fresh water, and shelter. It might sound simple, but out here, it's the foundation of everything.</outputText>
+				<acceptedKeys>
+					<li>ISST_IntroductionResponseC</li>
+				</acceptedKeys>
+				<allowCloseChat>false</allowCloseChat>
+			</li>
+			<li>
+				<chatKey>ISST_IntroductionResponseC</chatKey>
+				<responseOnly>true</responseOnly>
+				<inputText>...</inputText>
+				<outputText>2. Know Your Surroundings: Scout the area, partner. Look for resources like fertile soil, nearby wildlife, and mineral deposits. Keep an eye out for potential threats too, be it aggressive critters or less friendly neighbors.</outputText>
+				<acceptedKeys>
+					<li>ISST_IntroductionResponseD</li>
+				</acceptedKeys>
+				<allowCloseChat>false</allowCloseChat>
+			</li>
+			<li>
+				<chatKey>ISST_IntroductionResponseD</chatKey>
+				<responseOnly>true</responseOnly>
+				<inputText>...</inputText>
+				<outputText>3. Build a Strong Team: You can't run a successful colony all on your lonesome. Recruit capable folks with diverse skills - farmers, builders, doctors, you name it. Teamwork makes the dream work, after all.</outputText>
+				<acceptedKeys>
+					<li>ISST_IntroductionResponseE</li>
+				</acceptedKeys>
+				<allowCloseChat>false</allowCloseChat>
+			</li>
+			<li>
+				<chatKey>ISST_IntroductionResponseE</chatKey>
+				<responseOnly>true</responseOnly>
+				<inputText>...</inputText>
+				<outputText>4. Prepare for Anything: Out here, you gotta be ready for whatever the cosmos throws your way. That means having some defenses in place, be it walls, turrets, or sharpshootin' colonists.</outputText>
+				<acceptedKeys>
+					<li>ISST_IntroductionResponseF</li>
+				</acceptedKeys>
+				<allowCloseChat>false</allowCloseChat>
+			</li>
+			<li>
+				<chatKey>ISST_IntroductionResponseF</chatKey>
+				<responseOnly>true</responseOnly>
+				<inputText>...</inputText>
+				<outputText>5. Research and Innovate: Invest in research to unlock new technologies. Better gear, advanced medicine, and renewable energy sources can make a heap of difference in the long run.</outputText>
+				<acceptedKeys>
+					<li>ISST_IntroductionResponseG</li>
+				</acceptedKeys>
+				<allowCloseChat>false</allowCloseChat>
+			</li>
+			<li>
+				<chatKey>ISST_IntroductionResponseG</chatKey>
+				<responseOnly>true</responseOnly>
+				<inputText>...</inputText>
+				<outputText>6. Stay Flexible: The frontier's a changin' place, partner. Adaptability is key. Be ready to switch up your plans if the situation demands it.</outputText>
+				<acceptedKeys>
+					<li>ISST_IntroductionResponseH</li>
+				</acceptedKeys>
+				<allowCloseChat>false</allowCloseChat>
+			</li>
+			<li>
+				<chatKey>ISST_IntroductionResponseH</chatKey>
+				<responseOnly>true</responseOnly>
+				<inputText>...</inputText>
+				<outputText>7. Trade Smart: Don't hoard your goods like a dragon with its gold. Trade with passing ships and other colonies. You might just find that one thing you need to keep your people smilin'.</outputText>
+				<acceptedKeys>
+					<li>ISST_IntroductionResponseI</li>
+				</acceptedKeys>
+				<allowCloseChat>false</allowCloseChat>
+			</li>
+			<li>
+				<chatKey>ISST_IntroductionResponseI</chatKey>
+				<responseOnly>true</responseOnly>
+				<inputText>...</inputText>
+				<outputText>Remember, friend, every setback's just a setup for a comeback. If things get tough, don't lose that pioneer spirit. Feel free to holler if you need more advice. Wishing you clear skies and steady hands out there. Over and out.</outputText>
+				<pawnDef>InterStory_SamTaylor</pawnDef>
+				<outputWorker>InterStoryCore.ChatOptionWorker_IntroComplete</outputWorker>
+				<acceptedKeys>
+					<li>ISST_IntroductionResponseJ</li>
+				</acceptedKeys>
+			</li>
+			<li>
+				<chatKey>ISST_HelpA</chatKey>
+				<inputText>Hey uh, Sam? We're under attack from some raiders, could you send some help over?!</inputText>
+				<outputText>[The transmission crackles urgently.]\n\nHold on tight, partner! Captain Taylor's on the way. We ain't lettin' no varmints mess with our neighbors. Buckle up, we're saddlin' up the posse and ridin' to your aid. Stay strong, help's a-comin'! Over and out.</outputText>
+			</li>
+		</chatOptions>
+	</InterStoryCore.InterPawnDef>
+
+</Defs>
