@@ -21,7 +21,7 @@ namespace InterStoryCore
             {
                 InterStoryUtil.UseChatKey(option.chatKey);
             }
-            InterStoryUtil.GainFavorWith(option.pawnDef, -option.favorCost);
+            InterStoryUtil.ChangeInfluenceWith(option.pawnDef, -option.influenceCost);
         }
 
         public virtual bool Requirements()

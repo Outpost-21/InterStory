@@ -87,6 +87,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChatOptionWorker\ChatOptionWorker_UnderAttack.cs" />
     <Compile Include="ChatOptionWorker\ChatOptionWorker_RelationsChange.cs" />
     <Compile Include="ChatOptionWorker\ChatOptionWorker_SendAid.cs" />
     <Compile Include="Data\ChatOption.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="ChatOptionWorker\ChatOptionWorker.cs" />
     <Compile Include="ChatWorkers\ChatWorker.cs" />
     <Compile Include="InterStoryStartup.cs" />
+    <Compile Include="Windows\MainButtonWorker_Contact.cs" />
     <Compile Include="Utilities\InterStoryUtil.cs" />
     <Compile Include="WorldComps\WorldComp_InterStory.cs" />
     <Compile Include="Utilities\ListingUtil.cs" />

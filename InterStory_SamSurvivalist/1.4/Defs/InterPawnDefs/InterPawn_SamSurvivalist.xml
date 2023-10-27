@@ -7,16 +7,30 @@
 		<faction>OutlanderCivil</faction>
 		<pawnImagePath>InterStory/Pawns/Sam</pawnImagePath>
 		<introKey>ISST_IntroductionBegin</introKey>
+		<helloKey>ISST_HelloBegin</helloKey>
 		<rootKeys>
 			<li>ISST_GetToKnow_Begin</li>
+			<li>ISST_Insult_Begin</li>
 			<li>ISST_HelpMilitary</li>
 			<li>ISST_HelpFood</li>
 			<li>ISST_HelpMedical</li>
-			<li>ISST_DEVFavorAdd5</li>
+			<li>ISST_DEVInfluenceAdd10</li>
+			<li>ISST_DEVInfluenceAdd50</li>
 			<li>ISST_DEVGoodwillAdd10</li>
 			<li>ISST_DEVGoodwillAdd50</li>
 		</rootKeys>
 		<chatOptions>
+			<!-- ============================================================ Hello - Condition Enemies ============================================================ -->
+			<li>
+				<chatKey>ISST_HelloBegin</chatKey>
+				<outputText>Howdy there, partner. Our sensors are pickin up a lot of activity over there, I reckon you're calling for some backup? Over.</outputText>
+				<outputWorker>InterStoryCore.ChatOptionWorker_UnderAttack</outputWorker>
+				<acceptedKeys>
+					<li>ISST_HelpMilitaryCheap</li>
+					<li>ISST_ReturnToRoot</li>
+				</acceptedKeys>
+				<allowCloseChat>true</allowCloseChat>
+			</li>
 			<!-- ============================================================ Introduction Branch ============================================================ -->
 			<li>
 				<chatKey>ISST_IntroductionBegin</chatKey>
@@ -104,17 +118,18 @@
 				<inputText>...</inputText>
 				<outputText>Remember, friend, every setback's just a setup for a comeback. If things get tough, don't lose that pioneer spirit. Feel free to holler if you need more advice. Wishing you clear skies and steady hands out there. Over and out.</outputText>
 				<outputWorker>InterStoryCore.ChatOptionWorker_IntroComplete</outputWorker>
-				<favorCost>-10</favorCost>
+				<influenceCost>-10</influenceCost>
 				<acceptedKeys>
 					<li>ISST_NullResponse</li>
 				</acceptedKeys>
 			</li>
 			<li>
 				<chatKey>ISST_IntroductionResponseSkip</chatKey>
+				<buttonText>Thanks for the welcome, Sam! I think I've got a handle on things...</buttonText>
 				<inputText>Thanks for the welcome, Sam! I think I've got a handle on things, I'll give you a call if I need any help!</inputText>
 				<outputText>Remember, friend, every setback's just a setup for a comeback. If things get tough, don't lose that pioneer spirit. Feel free to holler if you need advice. Wishing you clear skies and steady hands out there. Over and out.</outputText>
 				<outputWorker>InterStoryCore.ChatOptionWorker_IntroComplete</outputWorker>
-				<favorCost>-5</favorCost>
+				<influenceCost>-5</influenceCost>
 				<acceptedKeys>
 					<li>ISST_NullResponse</li>
 				</acceptedKeys>
@@ -144,6 +159,14 @@
 				<outputText>Boy howdy, settle in 'cause I've got a tale that'd curl your toes.\n\nYears ago, back when I was flyin' the stars in my trusty old ship, the Stardust Serenade, I was a scout for a mining expedition in the outer reaches of the known galaxy. We were chasin' whispers of riches, seekin' out precious resources on uncharted planets.</outputText>
 				<acceptedKeys>
 					<li>ISST_GetToKnow_More_1A</li>
+				</acceptedKeys>
+			</li>
+			<li>
+				<chatKey>ISST_GetToKnow_More</chatKey>
+				<inputText>If you had the chance, would you want to leave?</inputText>
+				<outputText>Well, I've pondered that question under the starlit sky many a night. As much as I miss the vastness of space and the unknown horizons of the galaxy, this rimworld has become my home. It's where I've forged bonds, faced challenges, and discovered a strength I never knew I had.</outputText>
+				<acceptedKeys>
+					<li>ISST_GetToKnow_More_2A</li>
 				</acceptedKeys>
 			</li>
 			<!-- ============================================================ Personal Information - 1 ============================================================ -->
@@ -180,51 +203,136 @@
 					<li>ISST_ReturnToRoot</li>
 				</acceptedKeys>
 			</li>
+			<!-- ============================================================ Personal Information - 2 ============================================================ -->
+			<li>
+				<chatKey>ISST_GetToKnow_More_2A</chatKey>
+				<inputText>...</inputText>
+				<outputText>Leavin' this place would mean leavin' behind the people who've stood by me through thick and thin. It would mean sayin' goodbye to the very essence of what makes this place special - the resilience of the human spirit against the backdrop of the great unknown.</outputText>
+				<acceptedKeys>
+					<li>ISST_GetToKnow_More_2B</li>
+				</acceptedKeys>
+			</li>
+			<li>
+				<chatKey>ISST_GetToKnow_More_2B</chatKey>
+				<inputText>...</inputText>
+				<outputText>So, while the stars might call to me, and the sky above still holds a sense of wonder, I reckon I'll stay right here. There's a whole universe in the hearts of the folks I've come to call family. And in this corner of the cosmos, I've found somethin' precious, somethin' worth fightin' for.</outputText>
+				<acceptedKeys>
+					<li>ISST_GetToKnow_More</li>
+					<li>ISST_ReturnToRoot</li>
+				</acceptedKeys>
+			</li>
+			<!-- ============================================================ Insults ============================================================ -->
+			<li>
+				<chatKey>ISST_Insult_Begin</chatKey>
+				<inputText>[Insult...]</inputText>
+				<acceptedKeys>
+					<li>ISST_Insult_More</li>
+					<li>ISST_ReturnToRoot</li>
+				</acceptedKeys>
+			</li>
+			<li>
+				<chatKey>ISST_Insult_More</chatKey>
+				<inputText>Your kind is considered a delicacy where I come from!</inputText>
+				<outputText>Well, I hope your taste buds enjoy something a bit more exotic than a space cowboy! Around here, we're more inclined to rustle up some local critters for supper. But hey, to each their own in this vast universe. If you ever find yourself on this rimworld, maybe I'll surprise you with a dish that'll change your mind about us space-folk being delicacies!</outputText>
+				<acceptedKeys>
+					<li>ISST_ReturnToRoot</li>
+				</acceptedKeys>
+			</li>
+			<li>
+				<chatKey>ISST_Insult_More</chatKey>
+				<inputText>Your mother was a hamster, and your father smelled of elderberries!</inputText>
+				<outputText>Well now, that's a line straight out of a classic tale! Reminds me of the kind of banter we'd share around the campfire. You got a knack for humor, friend. If you ever find your way to this rimworld, I reckon we'd get along just fine.</outputText>
+				<acceptedKeys>
+					<li>ISST_ReturnToRoot</li>
+				</acceptedKeys>
+			</li>
+			<li>
+				<chatKey>ISST_Insult_More</chatKey>
+				<inputText>Yesterday I scrunched a bug with my foot. The spot on the floor had some stunning similarities to your face.</inputText>
+				<outputText>Well, I reckon I've had my fair share of scrapes and bruises, but comparin' my face to a bug squish? That's a new one. Guess we all find inspiration in unexpected places, don't we? Just be sure to watch your step - wouldn't want you mistakin' me for a critter out here on the rimworld, partner!</outputText>
+				<acceptedKeys>
+					<li>ISST_ReturnToRoot</li>
+				</acceptedKeys>
+			</li>
+			<li>
+				<chatKey>ISST_Insult_More</chatKey>
+				<inputText>Your body is as ineffective as... nope, there is nothing comparable to your body's ineffectiveness.</inputText>
+				<outputText>Well, I might not be the most advanced model of spacefaring efficiency, but out here on the rimworld, a little bit of grit and determination goes a long way. We might not have the shiniest gadgets, but we've got heart and tenacity. And sometimes, that's all you need to survive in the vast expanse of the cosmos, my friend.</outputText>
+				<acceptedKeys>
+					<li>ISST_ReturnToRoot</li>
+				</acceptedKeys>
+			</li>
+			<li>
+				<chatKey>ISST_Insult_More</chatKey>
+				<inputText>May whatever god you believe have mercy on you, we will have none!</inputText>
+				<outputText>Well, partner, I reckon I'll take my chances with the cosmic winds and the wild frontier. Out here, mercy can be as rare as a rainstorm in the desert. But who knows, maybe we'll find a little kindness in the stars someday. Until then, we'll keep ridin' these cosmic trails, come what may. Safe travels to you, wherever your journey leads.</outputText>
+				<acceptedKeys>
+					<li>ISST_ReturnToRoot</li>
+				</acceptedKeys>
+			</li>
 			<!-- ============================================================ Standard Help Requests ============================================================ -->
 			<li>
+				<chatKey>ISST_HelpMilitaryCheap</chatKey>
+				<buttonLabel>Cost: 25 Influence</buttonLabel>
+				<buttonText>[Request Military Aid]</buttonText>
+				<inputText>Yes, please! I was just about to ask!</inputText>
+				<outputText>Hold on tight, partner! Captain Taylor's on the way. We ain't lettin' no varmints mess with our neighbors. Buckle up, we're saddlin' up the posse and ridin' to your aid. Stay strong, help's a-comin'! Over and out.</outputText>
+				<outputWorker>InterStoryCore.ChatOptionWorker_SendAid</outputWorker>
+				<influenceCost>25</influenceCost>
+				<needsFaction>true</needsFaction>
+				<minGoodwill>0</minGoodwill>
+			</li>
+			<li>
 				<chatKey>ISST_HelpMilitary</chatKey>
-				<buttonLabel>Cost: 50 Favor</buttonLabel>
+				<buttonLabel>Cost: 30 Influence</buttonLabel>
 				<buttonText>[Request Military Aid]</buttonText>
 				<inputText>We're under attack from some raiders, could you send some help over?</inputText>
 				<outputText>Hold on tight, partner! Captain Taylor's on the way. We ain't lettin' no varmints mess with our neighbors. Buckle up, we're saddlin' up the posse and ridin' to your aid. Stay strong, help's a-comin'! Over and out.</outputText>
 				<outputWorker>InterStoryCore.ChatOptionWorker_SendAid</outputWorker>
-				<favorCost>50</favorCost>
+				<influenceCost>30</influenceCost>
 				<needsFaction>true</needsFaction>
 				<minGoodwill>20</minGoodwill>
 			</li>
 			<li>
 				<chatKey>ISST_HelpFood</chatKey>
-				<buttonLabel>Cost: 20 Favor</buttonLabel>
+				<buttonLabel>Cost: 20 Influence</buttonLabel>
 				<buttonText>[Request Food Aid]</buttonText>
 				<inputText>We could really use some food, if you have any to spare?</inputText>
 				<outputText>Hold on tight, partner! Captain Taylor's on the way. We ain't lettin' no varmints mess with our neighbors. Buckle up, we're saddlin' up the posse and ridin' to your aid. Stay strong, help's a-comin'! Over and out.</outputText>
 				<outputWorker>InterStoryCore.ChatOptionWorker_SendAid</outputWorker>
-				<favorCost>20</favorCost>
+				<influenceCost>20</influenceCost>
 				<needsFaction>true</needsFaction>
 				<minGoodwill>20</minGoodwill>
 			</li>
 			<li>
 				<chatKey>ISST_HelpMedical</chatKey>
-				<buttonLabel>Cost: 20 Favor</buttonLabel>
+				<buttonLabel>Cost: 20 Influence</buttonLabel>
 				<buttonText>[Request Medical Aid]</buttonText>
 				<inputText>We could really use some medicine, if you have any to spare?</inputText>
 				<outputText>Hold on tight, partner! Captain Taylor's on the way. We ain't lettin' no varmints mess with our neighbors. Buckle up, we're saddlin' up the posse and ridin' to your aid. Stay strong, help's a-comin'! Over and out.</outputText>
 				<outputWorker>InterStoryCore.ChatOptionWorker_SendAid</outputWorker>
-				<favorCost>20</favorCost>
+				<influenceCost>20</influenceCost>
 				<needsFaction>true</needsFaction>
 				<minGoodwill>20</minGoodwill>
 			</li>
 			<!-- ============================================================ Return to Root ============================================================ -->
 			<li>
 				<chatKey>ISST_ReturnToRoot</chatKey>
-				<inputText>Let's talk about something else.</inputText>
+				<inputText>I'd like to talk about something else.</inputText>
 				<returnToRoot>true</returnToRoot>
 			</li>
 			<!-- ============================================================ Developer Tools / Tests / Cheats ============================================================ -->
 			<li>
-				<chatKey>ISST_DEVFavorAdd5</chatKey>
-				<inputText>[DEV: Add Favor - 5]</inputText>
-				<favorCost>-5</favorCost>
+				<chatKey>ISST_DEVInfluenceAdd10</chatKey>
+				<inputText>[DEV: Add Influence - 10]</inputText>
+				<influenceCost>-10</influenceCost>
+				<devOnly>true</devOnly>
+				<returnToRoot>true</returnToRoot>
+			</li>
+			<li>
+				<chatKey>ISST_DEVInfluenceAdd50</chatKey>
+				<inputText>[DEV: Add Influence - 50]</inputText>
+				<influenceCost>-50</influenceCost>
 				<devOnly>true</devOnly>
 				<returnToRoot>true</returnToRoot>
 			</li>
@@ -240,7 +348,7 @@
 				<chatKey>ISST_DEVGoodwillAdd50</chatKey>
 				<inputText>[DEV: Add Goodwill - 50]</inputText>
 				<outputWorker>InterStoryCore.ChatOptionWorker_RelationsChange</outputWorker>
-				<goodwillChange>10</goodwillChange>
+				<goodwillChange>50</goodwillChange>
 				<devOnly>true</devOnly>
 				<onlyOnce>true</onlyOnce>
 				<returnToRoot>true</returnToRoot>

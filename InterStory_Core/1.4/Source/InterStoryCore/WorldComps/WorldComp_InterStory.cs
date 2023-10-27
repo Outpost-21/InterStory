@@ -14,7 +14,7 @@ namespace InterStoryCore
     {
         public Dictionary<string, bool> firstChatDone = new Dictionary<string, bool>();
 
-        public Dictionary<string, int> favorEarned = new Dictionary<string, int>();
+        public Dictionary<string, int> influenceEarned = new Dictionary<string, int>();
 
         public Dictionary<string, bool> chatKeysUsed = new Dictionary<string, bool>();
 
@@ -22,7 +22,7 @@ namespace InterStoryCore
         {
             base.ExposeData();
             Scribe_Collections.Look(ref firstChatDone, "firstChatDone");
-            Scribe_Collections.Look(ref favorEarned, "favorEarned");
+            Scribe_Collections.Look(ref influenceEarned, "influenceEarned");
             Scribe_Collections.Look(ref chatKeysUsed, "chatKeysUsed");
         }
 

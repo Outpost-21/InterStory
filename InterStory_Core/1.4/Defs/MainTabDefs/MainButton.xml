@@ -6,8 +6,9 @@
 		<label>Contact</label>
 		<description>Interact with faction pawns.</description>
 		<tabWindowClass>InterStoryCore.MainTabWindow_InterStory</tabWindowClass>
+		<workerClass>InterStoryCore.MainButtonWorker_Contact</workerClass>
 		<order>499</order>
-		<validWithoutMap>true</validWithoutMap>
+		<validWithoutMap>false</validWithoutMap>
 		<minimized>True</minimized>
 		<iconPath>InterStory/MainTab_InterStory</iconPath>
 	</MainButtonDef>

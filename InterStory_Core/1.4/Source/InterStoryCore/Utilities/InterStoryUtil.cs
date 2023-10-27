@@ -36,27 +36,27 @@ namespace InterStoryCore
             return comp.chatKeysUsed[key];
         }
 
-        public static void GainFavorWith(InterPawnDef pawn, int value)
+        public static void ChangeInfluenceWith(InterPawnDef pawn, int value)
         {
             WorldComp_InterStory comp = GetWorldComp;
-            if (comp.favorEarned.ContainsKey(pawn.defName))
+            if (comp.influenceEarned.ContainsKey(pawn.defName))
             {
-                comp.favorEarned[pawn.defName] += value;
+                comp.influenceEarned[pawn.defName] += value;
             }
             else
             {
-                comp.favorEarned.Add(pawn.defName, value);
+                comp.influenceEarned.Add(pawn.defName, value);
             }
         }
 
-        public static int GetFavorWith(InterPawnDef pawn)
+        public static int GetInfluenceWith(InterPawnDef pawn)
         {
             WorldComp_InterStory comp = GetWorldComp;
-            if (!comp.favorEarned.ContainsKey(pawn.defName))
+            if (!comp.influenceEarned.ContainsKey(pawn.defName))
             {
-                comp.favorEarned.Add(pawn.defName, 0);
+                comp.influenceEarned.Add(pawn.defName, 0);
             }
-            return comp.favorEarned[pawn.defName];
+            return comp.influenceEarned[pawn.defName];
         }
 
         public static bool HasChattedBefore(InterPawnDef pawn)

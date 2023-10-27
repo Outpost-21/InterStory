@@ -18,6 +18,11 @@ namespace InterStoryCore
         public float chatHeight;
         public float responseHeight;
 
+        public bool saidHello = false;
+
+        public Vector2 optionsScrollPosition;
+        public float optionsViewRectHeight;
+
         public ChatWorker() { }
 
         public void InitChat()
@@ -30,42 +35,47 @@ namespace InterStoryCore
                                                       where o.chatKey == def.introKey
                                                       select o;
 
-                    lastChatOption = options.RandomElement();
+                    nextChatOption = options.RandomElement();
                 }
-                else if (!def.helloKey.NullOrEmpty())
+                else if (!saidHello && !def.helloKey.NullOrEmpty())
                 {
                     IEnumerable<ChatOption> options = from o in def.chatOptions
                                                       where o.chatKey == def.helloKey && o.CanShow && o.Worker.Requirements()
                                                       select o;
 
-                    lastChatOption = options.RandomElement();
+                    nextChatOption = options.RandomElement();
+                    saidHello = true;
                 }
             }
             if(nextChatOption != null)
             {
-                if (nextChatOption.returnToRoot)
-                {
-                    lastChatOption = null;
-                    nextChatOption = null;
-                    return;
-                }
-                lastChatOption = nextChatOption;
                 nextChatOption.Worker.DoOutput();
+                //if (nextChatOption.returnToRoot) { lastChatOption = null; }
+                //else  { lastChatOption = nextChatOption; }
+                lastChatOption = nextChatOption;
                 nextChatOption = null;
             }
         }
 
         public virtual void DoChat(Rect inRect, Action action)
         {
+            bool flag = optionsViewRectHeight > inRect.height;
+            Rect viewRect = new Rect(inRect.x, inRect.y, inRect.width - (flag ? 26f : 0f), optionsViewRectHeight);
+            Widgets.BeginScrollView(inRect, ref optionsScrollPosition, viewRect);
             Listing_Standard listing = new Listing_Standard();
-            listing.Begin(inRect);
+            Rect rect = new Rect(viewRect.x, viewRect.y, viewRect.width, 999999f);
+            listing.Begin(rect);
+            // ============================ CONTENTS ================================
             listing.Label(def.LabelCap);
             listing.GapLine();
             InitChat();
             DoChatListing(listing);
             DoButtonListing(listing);
             DoCloseButton(listing, action);
+            // ======================================================================
+            optionsViewRectHeight = listing.CurHeight;
             listing.End();
+            Widgets.EndScrollView();
         }
 
         public virtual void DoChatListing(Listing_Standard listing)
@@ -97,16 +107,18 @@ namespace InterStoryCore
             {
                 if (chat.CanShow)
                 {
-                    if (lastChatOption == null)
+                    if (lastChatOption == null || lastChatOption.returnToRoot)
                     {
                         if (!def.rootKeys.NullOrEmpty() && def.rootKeys.Contains(chat.chatKey))
                         {
                             listing.DoChatButton(chat, delegate { nextChatOption = chat; });
+                            continue;
                         }
                     }
                     else if (!lastChatOption.acceptedKeys.NullOrEmpty() && lastChatOption.acceptedKeys.Contains(chat.chatKey))
                     {
                         listing.DoChatButton(chat, delegate { nextChatOption = chat; });
+                        continue;
                     }
                 }
             }
@@ -117,6 +129,7 @@ namespace InterStoryCore
             if ((lastChatOption == null || lastChatOption.allowCloseChat) && listing.ButtonText("[Close Communication]"))
             {
                 lastChatOption = null;
+                saidHello = false;
                 action.Invoke();
             }
         }

@@ -35,7 +35,7 @@ namespace InterStoryCore
 
         public InterPawnDef pawnDef;
 
-        public int favorCost = 0;
+        public int influenceCost = 0;
 
         public int minGoodwill = -999;
 
@@ -68,7 +68,7 @@ namespace InterStoryCore
                 {
                     return false;
                 }
-                if (InterStoryUtil.GetFavorWith(pawnDef) < favorCost)
+                if (InterStoryUtil.GetInfluenceWith(pawnDef) < influenceCost)
                 {
                     return false;
                 }
