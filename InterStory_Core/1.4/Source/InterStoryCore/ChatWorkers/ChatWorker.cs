@@ -35,7 +35,7 @@ namespace InterStoryCore
                 else if (!def.helloKey.NullOrEmpty())
                 {
                     IEnumerable<ChatOption> options = from o in def.chatOptions
-                                                      where o.chatKey == def.helloKey
+                                                      where o.chatKey == def.helloKey && o.CanShow && o.Worker.Requirements()
                                                       select o;
 
                     lastChatOption = options.RandomElement();
@@ -43,6 +43,12 @@ namespace InterStoryCore
             }
             if(nextChatOption != null)
             {
+                if (nextChatOption.returnToRoot)
+                {
+                    lastChatOption = null;
+                    nextChatOption = null;
+                    return;
+                }
                 lastChatOption = nextChatOption;
                 nextChatOption.Worker.DoOutput();
                 nextChatOption = null;
@@ -56,7 +62,15 @@ namespace InterStoryCore
             listing.Label(def.LabelCap);
             listing.GapLine();
             InitChat();
-            if(lastChatOption != null)
+            DoChatListing(listing);
+            DoButtonListing(listing);
+            DoCloseButton(listing, action);
+            listing.End();
+        }
+
+        public virtual void DoChatListing(Listing_Standard listing)
+        {
+            if (lastChatOption != null)
             {
                 if (lastChatOption.inputText != null)
                 {
@@ -75,29 +89,36 @@ namespace InterStoryCore
                     listing.Gap();
                 }
             }
+        }
+
+        public virtual void DoButtonListing(Listing_Standard listing)
+        {
             foreach (ChatOption chat in def.chatOptions)
             {
-                if (lastChatOption == null)
+                if (chat.CanShow)
                 {
-                    if (!chat.responseOnly)
+                    if (lastChatOption == null)
                     {
-                        listing.DoChatButton(chat, delegate { nextChatOption = chat; });
+                        if (!def.rootKeys.NullOrEmpty() && def.rootKeys.Contains(chat.chatKey))
+                        {
+                            listing.DoChatButton(chat, delegate { nextChatOption = chat; });
+                        }
                     }
-                }
-                else if (!lastChatOption.acceptedKeys.NullOrEmpty())
-                {
-                    if (lastChatOption.acceptedKeys.Contains(chat.chatKey))
+                    else if (!lastChatOption.acceptedKeys.NullOrEmpty() && lastChatOption.acceptedKeys.Contains(chat.chatKey))
                     {
                         listing.DoChatButton(chat, delegate { nextChatOption = chat; });
                     }
                 }
             }
-            if ((lastChatOption == null || lastChatOption.allowCloseChat) &&listing.ButtonText("[Close Communication]"))
+        }
+
+        public virtual void DoCloseButton(Listing_Standard listing, Action action)
+        {
+            if ((lastChatOption == null || lastChatOption.allowCloseChat) && listing.ButtonText("[Close Communication]"))
             {
                 lastChatOption = null;
                 action.Invoke();
             }
-            listing.End();
         }
     }
 }

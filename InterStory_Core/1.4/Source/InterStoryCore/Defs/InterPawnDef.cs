@@ -15,11 +15,25 @@ namespace InterStoryCore
 
         public FactionDef faction;
 
+        public Faction Faction
+        {
+            get
+            {
+                if (faction != null)
+                {
+                    return Find.FactionManager.FirstFactionOfDef(faction) ?? null;
+                }
+                return null;
+            }
+        }
+
         public string introKey;
 
         public string helloKey;
 
-        public List<ChatOption> chatOptions;
+        public List<string> rootKeys = new List<string>();
+
+        public List<ChatOption> chatOptions = new List<ChatOption>();
 
         public Type chatWorker = typeof(ChatWorker);
 

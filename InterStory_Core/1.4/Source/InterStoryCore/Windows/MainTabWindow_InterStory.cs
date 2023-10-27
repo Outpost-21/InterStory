@@ -70,8 +70,15 @@ namespace InterStoryCore
         {
             Rect drawRect = new Rect(inRect.x + 16f, inRect.y + 16f, inRect.width - 32f, inRect.height - 32f);
             Widgets.DrawTextureFitted(drawRect, MaterialPool.MatFrom(selectedPawn.pawnImagePath).mainTexture, 1f);
-            Rect labelRect = new Rect(inRect.x + 16f, inRect.y + drawRect.height + 24f, inRect.width - 32f, 32f);
-            Widgets.TextArea(labelRect, "Favor: " + InterStoryUtil.GetFavorWith(selectedPawn), true);
+            Rect listingRect = new Rect(inRect.x + 16f, inRect.y + drawRect.height + 24f, inRect.width - 32f, 32f);
+            Listing_Standard listing = new Listing_Standard();
+            listing.Begin(listingRect);
+            listing.LabelDouble("Favor: ", InterStoryUtil.GetFavorWith(selectedPawn).ToString());
+            if(selectedPawn.Faction != null)
+            {
+                listing.LabelDouble("Faction Goodwill:", selectedPawn.Faction.GoodwillWith(Faction.OfPlayer).ToString());
+            }
+            listing.End();
         }
     }
 }

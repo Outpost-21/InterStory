@@ -13,6 +13,29 @@ namespace InterStoryCore
     {
         public static WorldComp_InterStory GetWorldComp => Find.World.GetComponent<WorldComp_InterStory>();
 
+        public static void UseChatKey(string key)
+        {
+            WorldComp_InterStory comp = GetWorldComp;
+            if (comp.chatKeysUsed.ContainsKey(key))
+            {
+                comp.chatKeysUsed[key] = true;
+            }
+            else
+            {
+                comp.chatKeysUsed.Add(key, true);
+            }
+        }
+
+        public static bool CheckChatKey(string key)
+        {
+            WorldComp_InterStory comp = GetWorldComp;
+            if (!comp.chatKeysUsed.ContainsKey(key))
+            {
+                comp.chatKeysUsed.Add(key, false);
+            }
+            return comp.chatKeysUsed[key];
+        }
+
         public static void GainFavorWith(InterPawnDef pawn, int value)
         {
             WorldComp_InterStory comp = GetWorldComp;

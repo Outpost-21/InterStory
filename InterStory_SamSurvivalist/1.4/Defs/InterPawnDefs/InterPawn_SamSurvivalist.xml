@@ -4,21 +4,31 @@
 	<InterStoryCore.InterPawnDef>
 		<defName>InterStory_SamTaylor</defName>
 		<label>Sam Taylor</label>
+		<faction>OutlanderCivil</faction>
 		<pawnImagePath>InterStory/Pawns/Sam</pawnImagePath>
-		<introKey>ISST_IntroductionHello</introKey>
+		<introKey>ISST_IntroductionBegin</introKey>
+		<rootKeys>
+			<li>ISST_GetToKnow_Begin</li>
+			<li>ISST_HelpMilitary</li>
+			<li>ISST_HelpFood</li>
+			<li>ISST_HelpMedical</li>
+			<li>ISST_DEVFavorAdd5</li>
+			<li>ISST_DEVGoodwillAdd10</li>
+			<li>ISST_DEVGoodwillAdd50</li>
+		</rootKeys>
 		<chatOptions>
+			<!-- ============================================================ Introduction Branch ============================================================ -->
 			<li>
-				<chatKey>ISST_IntroductionHello</chatKey>
+				<chatKey>ISST_IntroductionBegin</chatKey>
 				<outputText>Howdy there, partner. This here's Captain Sam Taylor, space cowboy extraordinaire, coming at ya from the edge of the galaxy. I reckon we got ourselves a new neighbor on this rimworld of ours. Pleasure to make your acquaintance. What can I do ya for, settler? Over.</outputText>
-				<responseOnly>true</responseOnly>
 				<acceptedKeys>
 					<li>ISST_IntroductionResponseA</li>
+					<li>ISST_IntroductionResponseSkip</li>
 				</acceptedKeys>
 				<allowCloseChat>false</allowCloseChat>
 			</li>
 			<li>
 				<chatKey>ISST_IntroductionResponseA</chatKey>
-				<responseOnly>true</responseOnly>
 				<inputText>Hi, nice to meet you! Got any tips for someone just getting started?</inputText>
 				<outputText>Well, ain't that a fine question to start with. Surviving on the rimworld can be as wild as a bucking bronco, but fear not, I've got a few nuggets of wisdom to share...</outputText>
 				<acceptedKeys>
@@ -28,7 +38,6 @@
 			</li>
 			<li>
 				<chatKey>ISST_IntroductionResponseB</chatKey>
-				<responseOnly>true</responseOnly>
 				<inputText>...</inputText>
 				<outputText>1. Secure Your Basics: First things first, make sure you've got a solid source of food, fresh water, and shelter. It might sound simple, but out here, it's the foundation of everything.</outputText>
 				<acceptedKeys>
@@ -38,7 +47,6 @@
 			</li>
 			<li>
 				<chatKey>ISST_IntroductionResponseC</chatKey>
-				<responseOnly>true</responseOnly>
 				<inputText>...</inputText>
 				<outputText>2. Know Your Surroundings: Scout the area, partner. Look for resources like fertile soil, nearby wildlife, and mineral deposits. Keep an eye out for potential threats too, be it aggressive critters or less friendly neighbors.</outputText>
 				<acceptedKeys>
@@ -48,7 +56,6 @@
 			</li>
 			<li>
 				<chatKey>ISST_IntroductionResponseD</chatKey>
-				<responseOnly>true</responseOnly>
 				<inputText>...</inputText>
 				<outputText>3. Build a Strong Team: You can't run a successful colony all on your lonesome. Recruit capable folks with diverse skills - farmers, builders, doctors, you name it. Teamwork makes the dream work, after all.</outputText>
 				<acceptedKeys>
@@ -58,7 +65,6 @@
 			</li>
 			<li>
 				<chatKey>ISST_IntroductionResponseE</chatKey>
-				<responseOnly>true</responseOnly>
 				<inputText>...</inputText>
 				<outputText>4. Prepare for Anything: Out here, you gotta be ready for whatever the cosmos throws your way. That means having some defenses in place, be it walls, turrets, or sharpshootin' colonists.</outputText>
 				<acceptedKeys>
@@ -68,7 +74,6 @@
 			</li>
 			<li>
 				<chatKey>ISST_IntroductionResponseF</chatKey>
-				<responseOnly>true</responseOnly>
 				<inputText>...</inputText>
 				<outputText>5. Research and Innovate: Invest in research to unlock new technologies. Better gear, advanced medicine, and renewable energy sources can make a heap of difference in the long run.</outputText>
 				<acceptedKeys>
@@ -78,7 +83,6 @@
 			</li>
 			<li>
 				<chatKey>ISST_IntroductionResponseG</chatKey>
-				<responseOnly>true</responseOnly>
 				<inputText>...</inputText>
 				<outputText>6. Stay Flexible: The frontier's a changin' place, partner. Adaptability is key. Be ready to switch up your plans if the situation demands it.</outputText>
 				<acceptedKeys>
@@ -88,7 +92,6 @@
 			</li>
 			<li>
 				<chatKey>ISST_IntroductionResponseH</chatKey>
-				<responseOnly>true</responseOnly>
 				<inputText>...</inputText>
 				<outputText>7. Trade Smart: Don't hoard your goods like a dragon with its gold. Trade with passing ships and other colonies. You might just find that one thing you need to keep your people smilin'.</outputText>
 				<acceptedKeys>
@@ -98,19 +101,149 @@
 			</li>
 			<li>
 				<chatKey>ISST_IntroductionResponseI</chatKey>
-				<responseOnly>true</responseOnly>
 				<inputText>...</inputText>
 				<outputText>Remember, friend, every setback's just a setup for a comeback. If things get tough, don't lose that pioneer spirit. Feel free to holler if you need more advice. Wishing you clear skies and steady hands out there. Over and out.</outputText>
-				<pawnDef>InterStory_SamTaylor</pawnDef>
 				<outputWorker>InterStoryCore.ChatOptionWorker_IntroComplete</outputWorker>
+				<favorCost>-10</favorCost>
 				<acceptedKeys>
-					<li>ISST_IntroductionResponseJ</li>
+					<li>ISST_NullResponse</li>
 				</acceptedKeys>
 			</li>
 			<li>
-				<chatKey>ISST_HelpA</chatKey>
-				<inputText>Hey uh, Sam? We're under attack from some raiders, could you send some help over?!</inputText>
-				<outputText>[The transmission crackles urgently.]\n\nHold on tight, partner! Captain Taylor's on the way. We ain't lettin' no varmints mess with our neighbors. Buckle up, we're saddlin' up the posse and ridin' to your aid. Stay strong, help's a-comin'! Over and out.</outputText>
+				<chatKey>ISST_IntroductionResponseSkip</chatKey>
+				<inputText>Thanks for the welcome, Sam! I think I've got a handle on things, I'll give you a call if I need any help!</inputText>
+				<outputText>Remember, friend, every setback's just a setup for a comeback. If things get tough, don't lose that pioneer spirit. Feel free to holler if you need advice. Wishing you clear skies and steady hands out there. Over and out.</outputText>
+				<outputWorker>InterStoryCore.ChatOptionWorker_IntroComplete</outputWorker>
+				<favorCost>-5</favorCost>
+				<acceptedKeys>
+					<li>ISST_NullResponse</li>
+				</acceptedKeys>
+			</li>
+			<!-- ============================================================ Personal Information ============================================================ -->
+			<li>
+				<chatKey>ISST_GetToKnow_Begin</chatKey>
+				<inputText>I'd like to get to know you more.</inputText>
+				<outputText>Well, partner, I appreciate your curiosity, I'm an open book, ask away!</outputText>
+				<acceptedKeys>
+					<li>ISST_GetToKnow_More</li>
+					<li>ISST_ReturnToRoot</li>
+				</acceptedKeys>
+			</li>
+			<li>
+				<chatKey>ISST_GetToKnow_More</chatKey>
+				<inputText>What do you like to do around here?</inputText>
+				<outputText>Well, when I'm not keeping this colony in one piece, you'll find me stargazing, tinkering with tech, playing my guitar, and exploring the wild unknown on my trusty rover. Life's tough, but it's got its moments of beauty and adventure out here on the rim.</outputText>
+				<acceptedKeys>
+					<li>ISST_GetToKnow_More</li>
+					<li>ISST_ReturnToRoot</li>
+				</acceptedKeys>
+			</li>
+			<li>
+				<chatKey>ISST_GetToKnow_More</chatKey>
+				<inputText>Where did you come from?</inputText>
+				<outputText>Boy howdy, settle in 'cause I've got a tale that'd curl your toes.\n\nYears ago, back when I was flyin' the stars in my trusty old ship, the Stardust Serenade, I was a scout for a mining expedition in the outer reaches of the known galaxy. We were chasin' whispers of riches, seekin' out precious resources on uncharted planets.</outputText>
+				<acceptedKeys>
+					<li>ISST_GetToKnow_More_1A</li>
+				</acceptedKeys>
+			</li>
+			<!-- ============================================================ Personal Information - 1 ============================================================ -->
+			<li>
+				<chatKey>ISST_GetToKnow_More_1A</chatKey>
+				<inputText>...</inputText>
+				<outputText>One fateful day, our sensors picked up a blip on the cosmic radar, a signal hintin' at untold wealth. Eager as a coyote on a rabbit's trail, we set our course for that distant star, hopin' to strike it rich. But fate's a tricky mistress, my friend. As we approached the rim of a black hole, somethin' went haywire in our navigational systems. The ship started buckin' like a wild stallion, and before we knew it, we were spiralin' down toward this here rimworld.</outputText>
+				<acceptedKeys>
+					<li>ISST_GetToKnow_More_1B</li>
+				</acceptedKeys>
+			</li>
+			<li>
+				<chatKey>ISST_GetToKnow_More_1B</chatKey>
+				<inputText>...</inputText>
+				<outputText>The crash was a roar of thunder and a blaze of fire. The Stardust Serenade, my home among the stars, was reduced to scrap metal in the blink of an eye. Miraculously, I survived, though not without my fair share of bumps and bruises. I found myself stranded on this untamed rock, light-years away from the life I'd known.</outputText>
+				<acceptedKeys>
+					<li>ISST_GetToKnow_More_1C</li>
+				</acceptedKeys>
+			</li>
+			<li>
+				<chatKey>ISST_GetToKnow_More_1C</chatKey>
+				<inputText>...</inputText>
+				<outputText>But you know, life's about adaptin'. So, I salvaged what I could from the wreckage, gathered a ragtag group of survivors from the crash, and we started buildin'. We made this rimworld our home, fightin' off the dangers of the frontier together. Now, I'm the captain of the Last Chance Colony, and I've embraced my fate as a space cowboy, ridin' the cosmic trails of the unknown.</outputText>
+				<acceptedKeys>
+					<li>ISST_GetToKnow_More_1D</li>
+				</acceptedKeys>
+			</li>
+			<li>
+				<chatKey>ISST_GetToKnow_More_1D</chatKey>
+				<inputText>...</inputText>
+				<outputText>And that, my friend, is how ol' Sam Taylor ended up talkin' to you through this cracklin' communicator on the edge of the galaxy. Life might've thrown me a curveball, but I reckon I've found my own kind of paradise right here on this rimworld.</outputText>
+				<acceptedKeys>
+					<li>ISST_GetToKnow_More</li>
+					<li>ISST_ReturnToRoot</li>
+				</acceptedKeys>
+			</li>
+			<!-- ============================================================ Standard Help Requests ============================================================ -->
+			<li>
+				<chatKey>ISST_HelpMilitary</chatKey>
+				<buttonLabel>Cost: 50 Favor</buttonLabel>
+				<buttonText>[Request Military Aid]</buttonText>
+				<inputText>We're under attack from some raiders, could you send some help over?</inputText>
+				<outputText>Hold on tight, partner! Captain Taylor's on the way. We ain't lettin' no varmints mess with our neighbors. Buckle up, we're saddlin' up the posse and ridin' to your aid. Stay strong, help's a-comin'! Over and out.</outputText>
+				<outputWorker>InterStoryCore.ChatOptionWorker_SendAid</outputWorker>
+				<favorCost>50</favorCost>
+				<needsFaction>true</needsFaction>
+				<minGoodwill>20</minGoodwill>
+			</li>
+			<li>
+				<chatKey>ISST_HelpFood</chatKey>
+				<buttonLabel>Cost: 20 Favor</buttonLabel>
+				<buttonText>[Request Food Aid]</buttonText>
+				<inputText>We could really use some food, if you have any to spare?</inputText>
+				<outputText>Hold on tight, partner! Captain Taylor's on the way. We ain't lettin' no varmints mess with our neighbors. Buckle up, we're saddlin' up the posse and ridin' to your aid. Stay strong, help's a-comin'! Over and out.</outputText>
+				<outputWorker>InterStoryCore.ChatOptionWorker_SendAid</outputWorker>
+				<favorCost>20</favorCost>
+				<needsFaction>true</needsFaction>
+				<minGoodwill>20</minGoodwill>
+			</li>
+			<li>
+				<chatKey>ISST_HelpMedical</chatKey>
+				<buttonLabel>Cost: 20 Favor</buttonLabel>
+				<buttonText>[Request Medical Aid]</buttonText>
+				<inputText>We could really use some medicine, if you have any to spare?</inputText>
+				<outputText>Hold on tight, partner! Captain Taylor's on the way. We ain't lettin' no varmints mess with our neighbors. Buckle up, we're saddlin' up the posse and ridin' to your aid. Stay strong, help's a-comin'! Over and out.</outputText>
+				<outputWorker>InterStoryCore.ChatOptionWorker_SendAid</outputWorker>
+				<favorCost>20</favorCost>
+				<needsFaction>true</needsFaction>
+				<minGoodwill>20</minGoodwill>
+			</li>
+			<!-- ============================================================ Return to Root ============================================================ -->
+			<li>
+				<chatKey>ISST_ReturnToRoot</chatKey>
+				<inputText>Let's talk about something else.</inputText>
+				<returnToRoot>true</returnToRoot>
+			</li>
+			<!-- ============================================================ Developer Tools / Tests / Cheats ============================================================ -->
+			<li>
+				<chatKey>ISST_DEVFavorAdd5</chatKey>
+				<inputText>[DEV: Add Favor - 5]</inputText>
+				<favorCost>-5</favorCost>
+				<devOnly>true</devOnly>
+				<returnToRoot>true</returnToRoot>
+			</li>
+			<li>
+				<chatKey>ISST_DEVGoodwillAdd10</chatKey>
+				<inputText>[DEV: Add Goodwill - 10]</inputText>
+				<outputWorker>InterStoryCore.ChatOptionWorker_RelationsChange</outputWorker>
+				<goodwillChange>10</goodwillChange>
+				<devOnly>true</devOnly>
+				<returnToRoot>true</returnToRoot>
+			</li>
+			<li>
+				<chatKey>ISST_DEVGoodwillAdd50</chatKey>
+				<inputText>[DEV: Add Goodwill - 50]</inputText>
+				<outputWorker>InterStoryCore.ChatOptionWorker_RelationsChange</outputWorker>
+				<goodwillChange>10</goodwillChange>
+				<devOnly>true</devOnly>
+				<onlyOnce>true</onlyOnce>
+				<returnToRoot>true</returnToRoot>
 			</li>
 		</chatOptions>
 	</InterStoryCore.InterPawnDef>

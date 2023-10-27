@@ -16,11 +16,14 @@ namespace InterStoryCore
 
         public Dictionary<string, int> favorEarned = new Dictionary<string, int>();
 
+        public Dictionary<string, bool> chatKeysUsed = new Dictionary<string, bool>();
+
         public override void ExposeData()
         {
             base.ExposeData();
             Scribe_Collections.Look(ref firstChatDone, "firstChatDone");
             Scribe_Collections.Look(ref favorEarned, "favorEarned");
+            Scribe_Collections.Look(ref chatKeysUsed, "chatKeysUsed");
         }
 
         public WorldComp_InterStory(World world) : base(world)

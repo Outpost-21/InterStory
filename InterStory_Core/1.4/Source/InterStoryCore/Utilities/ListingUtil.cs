@@ -13,9 +13,20 @@ namespace InterStoryCore
     {
         public static void DoChatButton(this Listing_Standard listing, ChatOption chat, Action action)
         {
-            if (listing.ButtonText(chat.inputText))
+            string buttonText = chat.buttonText.NullOrEmpty() ? chat.inputText : chat.buttonText;
+            if (!chat.buttonLabel.NullOrEmpty())
             {
-                action.Invoke();
+                if(listing.ButtonTextLabeledPct(chat.buttonLabel, buttonText, 0.2f, TextAnchor.UpperLeft, null, chat.inputText))
+                {
+                    action.Invoke();
+                }
+            }
+            else
+            {
+                if (listing.ButtonText(buttonText))
+                {
+                    action.Invoke();
+                }
             }
         }
     }

@@ -13,14 +13,15 @@ namespace InterStoryCore
     {
         public override void DoOutput()
         {
+            base.DoOutput();
             WorldComp_InterStory comp = InterStoryUtil.GetWorldComp;
-            if (comp.firstChatDone.ContainsKey(pawn.defName))
+            if (comp.firstChatDone.ContainsKey(option.pawnDef.defName))
             {
-                comp.firstChatDone[pawn.defName] = true;
+                comp.firstChatDone[option.pawnDef.defName] = true;
             }
             else
             {
-                comp.firstChatDone.Add(pawn.defName, true);
+                comp.firstChatDone.Add(option.pawnDef.defName, true);
             }
         }
     }
