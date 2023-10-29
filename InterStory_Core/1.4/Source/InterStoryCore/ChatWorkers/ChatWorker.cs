@@ -50,8 +50,6 @@ namespace InterStoryCore
             if(nextChatOption != null)
             {
                 nextChatOption.Worker.DoOutput();
-                //if (nextChatOption.returnToRoot) { lastChatOption = null; }
-                //else  { lastChatOption = nextChatOption; }
                 lastChatOption = nextChatOption;
                 nextChatOption = null;
             }
